@@ -1,0 +1,165 @@
+/* ===========================
+   STYLE: Proben-Ansicht + Form
+   kompakt / table-like / scrollable
+   =========================== */
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif; background: #e9e6e3; color: #222; }
+
+/* Body legt vertikale Struktur fest */
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+/* Überschriften/Titel */
+.title { color: #222; margin: 0 8px 0 0; font-weight: 600; font-size: 14px; }
+
+/* --- Obere Bereiche (Maschinen / Proben Info) --- */
+.Maschinen, .Proben_Information {
+    width: min(1200px, 98%);
+    background: #efeeeb;
+    border: 1px solid #bfb8b0;
+    padding: 10px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 4px;
+}
+
+/* Maschinen cards */
+.card_maschine { background: #f6f5f3; border:1px solid #cfc9c2; padding:8px; border-radius:3px; width:140px; display:flex; flex-direction:column; gap:6px; align-items:center; }
+.card_maschine input[type="checkbox"]{ width:16px; height:16px; }
+
+/* Proben form-cards */
+.card_prob_inform { background: #f6f5f3; border:1px solid #cfc9c2; padding:8px; border-radius:3px; min-width:160px; display:flex; flex-direction:column; gap:6px; }
+.card_prob_inform label { font-size:13px; color:#222; }
+.card_prob_inform input, .card_prob_inform select { padding:6px; border-radius:3px; border:1px solid #bdb6ae; background: #fff; }
+
+/* Test-Information */
+.Test_Information {width: min(1200px, 98%);
+    background: #efeeeb;
+    border: 1px solid #bfb8b0;
+    padding: 10px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 4px; }
+
+/* --- Proben Ansicht (unten) --- */
+.proben_ansicht {
+    width: min(1200px, 98%);
+    background: #efeeeb;
+    border: 1px solid #bfb8b0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* wrapper mit Kopf und scrollbarem Körper */
+.table_wrapper {
+    background: #f7f6f4;
+    border: 1px solid #d0c9c1;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 360px; /* sichtbare Höhe der Tabelle */
+}
+
+/* Tabellenkopf (fixiert optisch) */
+.table_head {
+    display: grid;
+    grid-template-columns: 60px 140px 220px 110px 80px 100px 160px 90px 220px 120px;
+    gap: 6px;
+    padding: 10px;
+    background: #e6e2de;
+    border-bottom: 1px solid #d0c9c1;
+    font-weight: 700;
+    font-size: 13px;
+    color: #222;
+}
+
+/* Kopfspalten */
+.table_head .col { padding: 4px 6px; }
+
+/* Tabellenkörper - scrollbarer Bereich */
+.table_body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* einzelne Zeile als Grid (gleiches Column-Layout wie Kopf) */
+.row {
+    display: grid;
+    grid-template-columns: 60px 140px 220px 110px 80px 100px 160px 90px 220px 120px;
+    gap: 6px;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Zellen */
+.cell { padding: 4px 6px; font-size: 13px; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Streifen-Effekt: gerade/ungerade Reihen */
+.table_body .row:nth-child(odd) { background: #fbfbfc; }
+.table_body .row:nth-child(even) { background: #f0f7ff; }
+
+/* Hover-Zeile */
+.table_body .row:hover { background: #e8f3ff; }
+
+/* scrollbar styling */
+.table_body::-webkit-scrollbar { width: 12px; }
+.table_body::-webkit-scrollbar-thumb { background: linear-gradient(#cbb7a1,#b2a89a); border-radius:6px; border: 3px solid rgba(0,0,0,0.05); }
+
+/* Proben footer: Textarea (Detail) */
+.proben_footer {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Label und Textarea */
+.proben_footer label { font-size:13px; color:#222; margin-right:8px; align-self:flex-start; }
+.proben_footer textarea {
+    flex: 1;
+    min-height: 64px;
+    max-height: 160px;
+    padding: 8px;
+    resize: vertical;
+    border-radius: 4px;
+    border:1px solid #cfc9c2;
+    background: #fff;
+    color:#222;
+    font-size: 13px;
+}
+
+/* Referenzbild (klein, rechts) */
+.reference_image { align-self: flex-end; text-align: right; color:#666; font-size:12px; }
+.reference_image img { max-width: 280px; max-height: 140px; border: 1px solid #ccc; margin-top:6px; }
+
+/* responsive: enge Bildschirme */
+@media (max-width: 1100px) {
+    .table_head, .row { grid-template-columns: 50px 120px 180px 90px 70px 90px 140px 80px 160px 100px; }
+    .table_wrapper { max-height: 340px; }
+    .reference_image img { max-width: 200px; }
+}
+
+@media (max-width: 720px) {
+    .Maschinen, .Proben_Information, .proben_ansicht { width: 98%; padding:8px; }
+    .table_head, .row { grid-template-columns: 40px 1fr 1fr; grid-auto-flow: row; }
+    .row { padding: 8px; grid-auto-rows: minmax(24px, auto); }
+    .table_wrapper { max-height: 280px; }
+    .reference_image { display:none; }
+}

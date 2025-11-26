@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="de"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Book</title>
+    <link rel="stylesheet" href="/digital-book2.0.1-1.3a01df49.css">
+  <script type="module" src="/digital-book2.0.1-1.0f289648.js"></script>
+
+</head>
+<body>
+    <!-- Container: Maschinen (oben, zentriert) -->
+    <div class="Maschinen">
+        <p class="title">Maschinen:</p>
+
+        <div class="card_maschine">
+            <input type="checkbox" id="arburg1" name="arburg1" value="Arburg1">
+            <label for="arburg1">Arburg 1</label>
+        </div>
+
+        <div class="card_maschine">
+            <input type="checkbox" id="arburg2" name="arburg2" value="Arburg2">
+            <label for="arburg2">Arburg 2</label>
+        </div>
+    </div>
+
+    <!-- Container: Proben Information (Form oben) -->
+    <div class="Proben_Information" aria-label="Proben Information">
+        <p class="title">Proben Information</p>
+
+        <div class="card_prob_inform">
+            <label for="material">Material:</label>
+            <input type="text" id="material" name="material">
+        </div>
+
+        <div class="card_prob_inform">
+            <label for="charge">Charge Nr:</label>
+            <input type="text" id="charge" name="charge">
+        </div>
+
+        <div class="card_prob_inform">
+            <label for="gebinde">Gebinde:</label>
+            <select id="gebinde" name="gebinde">
+                <option value="Sack">Sack</option>
+                <option value="bigbag">BB</option>
+                <option value="okta">Okta</option>
+                <option value="sonstiges">Sonstiges</option>
+            </select>
+        </div>
+
+        <div class="card_prob_inform">
+            <label for="gebindeNr">Gebinde Nr:</label>
+            <select id="gebindeNr" name="gebindeNr"></select>
+        </div>
+
+        <div class="card_prob_inform">
+            <label for="auftrag">Auftrag:</label>
+            <select id="auftrag" name="auftrag">
+                <option value="fw">FW</option>
+                <option value="projektauftrag">Projektauftrag</option>
+                <option value="ana">ANA</option>
+                <option value="versuch">Versuch</option>
+                <option value="reklamation">Reklamation</option>
+                <option value="sonstiges">Sonstiges</option>
+            </select>
+        </div>
+
+        
+    </div>
+ 
+            <div class="Test_Information" aria-label="Test Information">
+            <p class="title">Test Information</p>
+
+            <div class="card_test_ifo">
+                <label for="test_info">Wähle eine Prüfung:</label>
+                <select id="test_info" name="test_info">
+                    <option value="zug">Zug</option>
+                    <option value="kerb">Kerb</option>
+                    <option value="schlag">Schlag</option>
+                    <option value="bn">BN</option>
+                    <option value="sonstiges">Sonstiges</option>
+                </select>
+            </div>
+
+            <div class="card_test_ifo">
+                <label for="test_plus">Prüfung Feld:</label>
+                <input type="text" id="test_plus" name="test_plus">
+            </div>
+
+            <input type="button" value="+">
+        </div>
+
+
+
+
+    <!-- NEU: Proben Ansicht (ganz unten) — große Tabelle + Textfeld -->
+    <div class="proben_ansicht" aria-label="Proben Ansicht">
+        <p class="title">Proben Ansicht</p>
+
+        <!-- Tabellen-Container (scrollbar) -->
+        <div class="table_wrapper" role="region" aria-label="Proben Tabelle">
+            <div class="table_head">
+                <div class="col id">ID</div>
+                <div class="col material">Material</div>
+                <div class="col charge">Charge</div>
+                <div class="col gebinde">Gebinde</div>
+                <div class="col gebindeNr">GebindeNr</div>
+                <div class="col test">Test</div>
+                <div class="col datum">Datum</div>
+                <div class="col user">User</div>
+                <div class="col bemerkungen">Bemerkungen</div>
+                <div class="col auftrag">Auftrag</div>
+            </div>
+
+            <div class="table_body" id="tableBody">
+                <!-- Beispielzeilen; du kannst diese per JS befüllen / aus DB rendern -->
+                <div class="row">
+                    <div class="cell id">11</div>
+                    <div class="cell material">aaaa</div>
+                    <div class="cell charge">NVST 167234</div>
+                    <div class="cell gebinde">sssss</div>
+                    <div class="cell gebindeNr">1</div>
+                    <div class="cell test">Schlag</div>
+                    <div class="cell datum">2025-11-12 16:26</div>
+                    <div class="cell user">Gast</div>
+                    <div class="cell bemerkungen">dddddddddddddd</div>
+                    <div class="cell auftrag">Versuch</div>
+                </div>
+
+                <div class="row">
+                    <div class="cell id">10</div>
+                    <div class="cell material">aaaa</div>
+                    <div class="cell charge">ssssss</div>
+                    <div class="cell gebinde">ssssss</div>
+                    <div class="cell gebindeNr">1</div>
+                    <div class="cell test">Schlag</div>
+                    <div class="cell datum">2025-11-12 16:25</div>
+                    <div class="cell user">Gast</div>
+                    <div class="cell bemerkungen">dddddddddddddd</div>
+                    <div class="cell auftrag">Versuch</div>
+                </div>
+
+                <!-- mehr Zeilen hier... -->
+            </div>
+        </div>
+
+        <!-- Textbereich unterhalb der Tabelle (genau wie in Bild) -->
+        <div class="proben_footer">
+            <label for="proben_notes">Notizen / Detail:</label>
+            <textarea id="proben_notes" rows="4" placeholder="Hier Notizen eingeben..."></textarea>
+        </div>
+
+         <div class="buttons">
+            <input type="button" value="Speichern">
+            <input type="button" value="Suchen">
+            <input type="button" value="Information">
+         </div>
+    </div>
+
+
+</body></html>
